@@ -2,9 +2,11 @@ import React,{useState} from 'react'
 import styled from 'styled-components'
 import {db} from '../Base'
 import { addDoc, Timestamp, collection} from 'firebase/firestore'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 
 const SentWishes = () => {
+  const navigate = useNavigate()
+  
   const [name, setName] = useState("")
   const [quote, setQuote] = useState("")
 
@@ -45,6 +47,7 @@ const SentWishes = () => {
                 <button onClick={(() => {
                   postName();
                   alert("Thank you")
+                  navigate('/my')
               })}><Link to='/my'>Send</Link></button>
               ) : (
                 <button style={{
